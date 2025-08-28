@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config"; // silent env load
 import connectDB from "./config/db.js";
+import parkingLotRoutes from "./routes/parkingLot.routes.js"
+import { errorHandler } from "./utils/errorHandler.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -14,9 +16,18 @@ app.use(express.json());
 connectDB();
 
 // Routes
+
+app.use("/api/parking-lots", parkingLotRoutes);
+
+// Health check
+app.get("/health", (req, res) => res.send("ok"));
+
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
+
+// Global Error Handler
+app.use(errorHandler);
 
 // Start Server
 app.listen(PORT, () => {

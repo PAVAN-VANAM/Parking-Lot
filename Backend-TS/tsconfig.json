@@ -3,7 +3,6 @@
     /* File locations */
     "rootDir": "src",
     "outDir": "dist",
-
     /* Language & Module System */
     "module": "nodenext",              // modern ESM
     "moduleResolution": "NodeNext",  // proper ESM resolution
@@ -11,7 +10,7 @@
     "lib": ["ES2022"],
 
     /* Node.js support */
-    "types": ["node"],
+    "types": ["jest","node"],
 
     /* Type Safety */
     "strict": true,
@@ -28,7 +27,9 @@
 
     /* For ESM */
     "moduleDetection": "force"
+
+    
   },
-  "include": ["src"],
+  "include": ["src","test"],
   "exclude": ["node_modules", "dist"]
 }
