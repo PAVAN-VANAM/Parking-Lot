@@ -1,9 +1,11 @@
+import { log } from "console";
 import mongoose, { type ConnectOptions } from "mongoose";
 
 const connectDB = async () => {
   try {
+    log("Connecting to MongoDB...");
     await mongoose.connect(
-      process.env.MONGO_URI || "mongodb://127.0.0.1:27017/parking",
+      process.env.MONGO_URI || "",
       {
         autoIndex: true
       } as ConnectOptions
